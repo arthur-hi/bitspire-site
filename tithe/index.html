@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-bs-core="default">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self' https://replace-this-project.supabase.co; img-src 'self' data: https://*.steamstatic.com https://*.akamaihd.net; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    >
+    <title>Tithe | Bitspire Studio</title>
+    <meta name="description" content="Tithe early access downloads.">
+    <link
+      href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.2/css/halfmoon.min.css"
+      rel="stylesheet"
+      integrity="sha256-RjeFzczeuZHCyS+Gvz+kleETzBF/o84ZRHukze/yv6o="
+      crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <script type="module" src="/assets/js/site.js"></script>
+    <script type="module" src="/assets/js/tithe.js"></script>
+  </head>
+  <body class="min-vh-100 d-flex flex-column">
+    <nav class="navbar border-bottom bg-body-tertiary" aria-label="Main navigation">
+      <div class="container-xl d-flex flex-wrap gap-3">
+        <a class="navbar-brand" href="/">Bitspire Studio</a>
+        <div class="navbar-nav flex-row gap-3 me-auto">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="/tithe/" aria-current="page">Tithe</a>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2" aria-live="polite">
+          <span data-auth-loading>Checking login state…</span>
+          <div data-auth-anonymous hidden>
+            <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
+          </div>
+          <div class="d-flex align-items-center gap-2" data-auth-user hidden>
+            <img
+              class="account-avatar rounded"
+              data-steam-avatar
+              src="/assets/avatar-placeholder.svg"
+              width="40"
+              height="40"
+              alt=""
+            >
+            <span class="d-grid">
+              <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">
+                <span data-steam-name>Steam user</span>
+              </a>
+              <small class="text-body-secondary" data-tithe-access>Tithe access is unknown.</small>
+            </span>
+            <button class="btn btn-outline-secondary btn-sm" type="button" data-logout>Log out</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-xl py-5 flex-grow-1">
+      <header class="page-copy mb-5">
+        <h1 class="display-4 fw-semibold">Tithe</h1>
+        <p class="lead mb-0">This page gives approved playtest users access to current builds.</p>
+      </header>
+
+      <p class="alert alert-secondary" data-os-label>Estimating this system…</p>
+      <p class="alert alert-danger" data-auth-error hidden></p>
+
+      <section class="card" data-tithe-section="loading">
+        <div class="card-body">
+          <h2 class="card-title h4">Checking access</h2>
+          <p class="card-text">The site is checking your Steam session and Tithe whitelist state.</p>
+        </div>
+      </section>
+
+      <section class="card" data-tithe-section="anonymous" hidden>
+        <div class="card-body">
+          <h2 class="card-title h4">Steam login is required</h2>
+          <p class="card-text">You must sign in before the site can check your access.</p>
+          <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
+        </div>
+      </section>
+
+      <section class="card" data-tithe-section="denied" hidden>
+        <div class="card-body">
+          <h2 class="card-title h4">No early access</h2>
+          <p class="card-text">Your Steam login is valid, but this Steam ID is not on the Tithe whitelist.</p>
+          <p class="card-text">If you think this state is wrong, send your Steam ID to the Bitspire Studio team.</p>
+        </div>
+      </section>
+
+      <section class="card" data-tithe-section="allowed" hidden>
+        <div class="card-body">
+          <h2 class="card-title h4">Early access builds</h2>
+          <p class="card-text" data-download-status>The site is loading the private build links.</p>
+          <div class="download-list" data-download-list></div>
+        </div>
+      </section>
+
+      <section class="card border-danger" data-tithe-section="error" hidden>
+        <div class="card-body">
+          <h2 class="card-title h4">The site could not check access</h2>
+          <p class="alert alert-danger mb-0" data-tithe-error></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-top mt-auto">
+      <div class="container-xl py-4 text-body-secondary">
+        Bitspire Studio account framework.
+      </div>
+    </footer>
+  </body>
+</html>

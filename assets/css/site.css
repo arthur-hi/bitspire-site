@@ -1,0 +1,59 @@
+html,
+body {
+  min-height: 100%;
+}
+
+.page-copy {
+  max-width: 48rem;
+}
+
+.account-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  background: var(--bs-secondary-bg);
+}
+
+.account-avatar--large {
+  width: 4rem;
+  height: 4rem;
+}
+
+.download-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.download-item {
+  padding: 1rem;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
+
+.download-item--suggested {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 1px var(--bs-primary);
+}
+
+.download-note {
+  color: var(--bs-primary-text-emphasis);
+  font-weight: 600;
+}
+
+.download-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border: var(--bs-border-width) solid var(--bs-primary);
+  border-radius: var(--bs-border-radius);
+  color: var(--bs-white);
+  background: var(--bs-primary);
+  text-decoration: none;
+}
+
+.download-link:hover {
+  color: var(--bs-white);
+  background: var(--bs-primary-text-emphasis);
+}
