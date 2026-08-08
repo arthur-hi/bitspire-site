@@ -1,0 +1,22 @@
+project_id = "bitspire-steam-portal"
+
+[functions.steam-auth-start]
+verify_jwt = false
+
+[functions.steam-auth-callback]
+verify_jwt = false
+
+[functions.session-exchange]
+verify_jwt = false
+
+[functions.auth-context]
+verify_jwt = false
+
+[functions.tithe-downloads]
+verify_jwt = false
+
+[functions.logout]
+verify_jwt = false
+
+[functions.health]
+verify_jwt = false
