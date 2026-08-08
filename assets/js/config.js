@@ -5,8 +5,8 @@ export const SITE_CONFIG = Object.freeze({
 
 export function checkSiteConfig() {
   if (
-    SITE_CONFIG.supabaseUrl.includes("qodebrpdmgqmdwtaysjf") ||
-    SITE_CONFIG.supabasePublishableKey.startsWith("sb_publishable_")
+    SITE_CONFIG.supabaseUrl.includes("replace-this-project") ||
+    SITE_CONFIG.supabasePublishableKey.startsWith("replace-with")
   ) {
     throw new Error("The site has no Supabase project configuration.");
   }
@@ -14,6 +14,7 @@ export function checkSiteConfig() {
 
 export function getFunctionUrl(functionName) {
   checkSiteConfig();
+
   return new URL(
     `/functions/v1/${functionName}`,
     SITE_CONFIG.supabaseUrl,
