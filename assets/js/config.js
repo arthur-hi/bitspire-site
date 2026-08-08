@@ -14,7 +14,6 @@ export function checkSiteConfig() {
 
 export function getFunctionUrl(functionName) {
   checkSiteConfig();
-
   return new URL(
     `/functions/v1/${functionName}`,
     SITE_CONFIG.supabaseUrl,

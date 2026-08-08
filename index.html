@@ -9,7 +9,8 @@
       content="default-src 'self'; connect-src 'self' https://qodebrpdmgqmdwtaysjf.supabase.co; img-src 'self' data: https://*.steamstatic.com https://*.akamaihd.net; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     >
     <title>Bitspire Studio</title>
-    <meta name="description" content="Bitspire Studio playtest portal.">
+    <meta name="description" content="Bitspire Studio is an independent game studio. We make retro fantasy video games.">
+    <link rel="icon" href="/assets/brand/bitspire-logo-light.png">
     <link
       href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.2/css/halfmoon.min.css"
       rel="stylesheet"
@@ -19,104 +20,126 @@
     <link rel="stylesheet" href="/assets/css/site.css">
     <script type="module" src="/assets/js/site.js"></script>
   </head>
-  <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar border-bottom bg-body-tertiary" aria-label="Main navigation">
-      <div class="container-xl d-flex flex-wrap gap-3">
-        <a class="navbar-brand" href="/">Bitspire Studio</a>
-        <div class="navbar-nav flex-row gap-3 me-auto">
-          <a class="nav-link active" href="/" aria-current="page">Home</a>
-          <a class="nav-link" href="/tithe/">Tithe</a>
+  <body class="studio-page min-vh-100 d-flex flex-column">
+    <nav class="studio-nav" aria-label="Main navigation">
+      <div class="container-xl studio-nav__inner">
+        <a class="brand-switch brand-switch--nav" href="/" aria-label="Bitspire Studio home">
+          <img class="brand-switch__light" src="/assets/brand/bitspire-logo-light.png" alt="Bitspire Studio">
+          <img class="brand-switch__dark" src="/assets/brand/bitspire-logo-dark.png" alt="">
+        </a>
+
+        <div class="studio-nav__links">
+          <a class="studio-nav__link is-active" href="/" aria-current="page">Studio</a>
+          <a class="studio-nav__link" href="/tithe/">Tithe</a>
         </div>
-        <div class="d-flex flex-wrap align-items-center gap-2" aria-live="polite">
-          <span data-auth-loading>Checking login state…</span>
+
+        <div class="studio-account" aria-live="polite">
+          <span class="studio-account__loading" data-auth-loading>Checking sign-in status.</span>
           <div data-auth-anonymous hidden>
-            <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
+            <a class="btn btn-light studio-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
           </div>
-          <div class="d-flex align-items-center gap-2" data-auth-user hidden>
+          <div class="studio-account__user" data-auth-user hidden>
             <img
-              class="account-avatar rounded"
+              class="account-avatar"
               data-steam-avatar
               src="/assets/avatar-placeholder.svg"
               width="40"
               height="40"
               alt=""
             >
-            <span class="d-grid">
+            <span class="studio-account__copy">
               <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">
                 <span data-steam-name>Steam user</span>
               </a>
-              <small class="text-body-secondary" data-tithe-access>Tithe access is unknown.</small>
+              <small data-tithe-access>Tithe access status is unknown.</small>
             </span>
-            <button class="btn btn-outline-secondary btn-sm" type="button" data-logout>Log out</button>
+            <button class="btn btn-outline-light btn-sm studio-button" type="button" data-logout>Log out</button>
           </div>
         </div>
       </div>
     </nav>
 
-    <main class="container-xl py-5 flex-grow-1">
-      <header class="page-copy mb-5">
-        <h1 class="display-4 fw-semibold">Bitspire Studio</h1>
-        <p class="lead mb-0">
-          This is the first version of the account and playtest portal.
-          It checks Steam identity and Tithe early access.
-        </p>
-      </header>
+    <main class="flex-grow-1">
+      <section class="studio-hero">
+        <div class="container-xl studio-hero__grid">
+          <div class="studio-hero__copy">
+            <h1>Small team.<br>Strange games.</h1>
+            <p class="studio-hero__lead">
+              Bitspire Studio is an independent team of friends making games. Our first game is Tithe, a retro dark fantasy co-op with tense and funny moments for you and your friends.
+            </p>
+            <p class="alert alert-danger studio-alert" data-auth-error hidden></p>
+            <a class="btn btn-light btn-lg studio-button" href="#games">View games</a>
+          </div>
 
-      <p class="alert alert-secondary" data-os-label>Estimating this system…</p>
-      <p class="alert alert-danger" data-auth-error hidden></p>
-
-      <div class="row g-4">
-        <section class="col-12 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title h4">Steam account</h2>
-              <div data-auth-loading>
-                <p class="card-text">The site is checking this browser.</p>
+          <div class="paper-stack-wrap">
+            <div class="paper-stack" id="hero-screenshot-stack" aria-label="Tithe gameplay screenshots stack" role="region">
+              <div class="paper-card" data-stack-pos="0">
+                <img src="/assets/screenshots/outside-sunrise.jpg" alt="Game screenshot: sunrise landscape" loading="eager">
               </div>
-              <div data-auth-anonymous hidden>
-                <p class="card-text">Sign in to show your Steam name, avatar, and Steam ID.</p>
-                <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
+              <div class="paper-card" data-stack-pos="1">
+                <img src="/assets/screenshots/cave-crystal.jpg" alt="Game screenshot: crystal cave" loading="lazy">
               </div>
-              <div data-auth-user hidden>
-                <div class="d-flex align-items-center gap-3 my-3">
-                  <img
-                    class="account-avatar account-avatar--large rounded"
-                    data-steam-avatar
-                    src="/assets/avatar-placeholder.svg"
-                    width="64"
-                    height="64"
-                    alt=""
-                  >
-                  <div>
-                    <strong data-steam-name>Steam user</strong><br>
-                    <span class="text-body-secondary">Steam ID: <span data-steam-id></span></span>
-                  </div>
-                </div>
-                <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">Open Steam profile</a>
+              <div class="paper-card" data-stack-pos="2">
+                <img src="/assets/screenshots/cave-exploring.jpg" alt="Game screenshot: cave exploration" loading="lazy">
+              </div>
+              <div class="paper-card" data-stack-pos="3">
+                <img src="/assets/screenshots/cave-monster.jpg" alt="Game screenshot: monster encounter" loading="lazy">
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="col-12 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title h4">Tithe early access</h2>
-              <p data-auth-loading>The site is checking access.</p>
-              <p data-auth-anonymous hidden>Sign in before the site can check the Tithe whitelist.</p>
-              <div data-auth-user hidden>
-                <p data-tithe-access>Tithe access is unknown.</p>
-                <a class="btn btn-outline-primary" href="/tithe/">Open the Tithe page</a>
-              </div>
+      <section class="studio-section" id="games">
+        <div class="container-xl">
+          <div class="studio-section__heading">
+            <h2>Games</h2>
+          </div>
+
+          <a class="studio-game" href="/tithe/">
+            <span class="studio-game__number" aria-hidden="true">
+              <span class="studio-game__status">Private playtest.<br><br></span>
+            </span>
+            <span class="studio-game__copy">
+              <strong>Tithe</strong>
+              <span>A retro dark fantasy cooperative game.</span>
+            </span>
+            <span class="studio-game__action">Open Tithe <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="studio-section studio-section--team" id="team">
+        <div class="container-xl">
+          <div class="studio-section__heading">
+            <h2>Team</h2>
+          </div>
+
+          <div class="studio-team">
+            <div>
+              <p class="team-label">Core team</p>
+              <ul class="team-list" aria-label="Core team members">
+                <li>Arthur<br><small>Game development<br> 3D art and animation</small></li>
+                <li>Jack<br><small>Game design<br>and game feel</small></li>
+                <li>Lucy<br><small>Story development<br> & programming</small></li>
+                <li>Matt<br><small>Production planning <br>and project tracking</small></li>
+                <li>Waide<br><small>Business planning,<br> audio and item design</small></li>
+              </ul>
+              <br>
+              <p class="team-label">Collaborators</p>
+              <ul class="team-list" aria-label="Collaborators">
+                <li>Romily<br><small>Tithe: Original concept, lore and concept art</small></li>
+              </ul>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="border-top mt-auto">
-      <div class="container-xl py-4 text-body-secondary">
-        Bitspire Studio account framework.
+    <footer class="studio-footer">
+      <div class="container-xl studio-footer__inner">
+        <span>Bitspire Studio</span>
+        <span>Independent game studio</span>
       </div>
     </footer>
   </body>

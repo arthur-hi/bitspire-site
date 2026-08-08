@@ -71,6 +71,10 @@ function renderDownloads(downloads) {
     const item = document.createElement("div");
     item.className = "download-item";
 
+    if (typeof download.platform === "string") {
+      item.dataset.platform = download.platform;
+    }
+
     if (download.platform === detectedPlatform) {
       item.classList.add("download-item--suggested");
     }

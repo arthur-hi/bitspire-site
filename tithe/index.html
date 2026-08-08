@@ -9,7 +9,8 @@
       content="default-src 'self'; connect-src 'self' https://qodebrpdmgqmdwtaysjf.supabase.co; img-src 'self' data: https://*.steamstatic.com https://*.akamaihd.net; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     >
     <title>Tithe | Bitspire Studio</title>
-    <meta name="description" content="Tithe early access downloads.">
+    <meta name="description" content="Tithe is a retro dark fantasy co-op game from Bitspire Studio.">
+    <link rel="icon" href="/assets/brand/bitspire-logo-light.png">
     <link
       href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.2/css/halfmoon.min.css"
       rel="stylesheet"
@@ -17,94 +18,175 @@
       crossorigin="anonymous"
     >
     <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/tithe.css">
     <script type="module" src="/assets/js/site.js"></script>
     <script type="module" src="/assets/js/tithe.js"></script>
   </head>
-  <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar border-bottom bg-body-tertiary" aria-label="Main navigation">
-      <div class="container-xl d-flex flex-wrap gap-3">
-        <a class="navbar-brand" href="/">Bitspire Studio</a>
-        <div class="navbar-nav flex-row gap-3 me-auto">
-          <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="/tithe/" aria-current="page">Tithe</a>
+  <body class="tithe-page min-vh-100 d-flex flex-column">
+    <nav class="studio-nav tithe-nav" aria-label="Main navigation">
+      <div class="container-xl studio-nav__inner">
+        <a class="brand-switch brand-switch--nav" href="/" aria-label="Bitspire Studio home">
+          <img class="brand-switch__light" src="/assets/brand/bitspire-logo-light.png" alt="Bitspire Studio">
+          <img class="brand-switch__dark" src="/assets/brand/bitspire-logo-dark.png" alt="">
+        </a>
+
+        <div class="studio-nav__links">
+          <a class="studio-nav__link" href="/">Studio</a>
+          <a class="studio-nav__link is-active" href="/tithe/" aria-current="page">Tithe</a>
         </div>
-        <div class="d-flex flex-wrap align-items-center gap-2" aria-live="polite">
-          <span data-auth-loading>Checking login state…</span>
+
+        <div class="studio-account" aria-live="polite">
+          <span class="studio-account__loading" data-auth-loading>Checking sign-in.</span>
           <div data-auth-anonymous hidden>
-            <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
+            <a class="btn tithe-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
           </div>
-          <div class="d-flex align-items-center gap-2" data-auth-user hidden>
+          <div class="studio-account__user" data-auth-user hidden>
             <img
-              class="account-avatar rounded"
+              class="account-avatar"
               data-steam-avatar
               src="/assets/avatar-placeholder.svg"
               width="40"
               height="40"
               alt=""
             >
-            <span class="d-grid">
+            <span class="studio-account__copy">
               <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">
                 <span data-steam-name>Steam user</span>
               </a>
-              <small class="text-body-secondary" data-tithe-access>Tithe access is unknown.</small>
+              <small data-tithe-access>Tithe access is unknown.</small>
             </span>
-            <button class="btn btn-outline-secondary btn-sm" type="button" data-logout>Log out</button>
+            <button class="btn btn-sm tithe-button tithe-button--quiet" type="button" data-logout>Log out</button>
           </div>
         </div>
       </div>
     </nav>
 
-    <main class="container-xl py-5 flex-grow-1">
-      <header class="page-copy mb-5">
-        <h1 class="display-4 fw-semibold">Tithe</h1>
-        <p class="lead mb-0">This page gives approved playtest users access to current builds.</p>
+    <main class="flex-grow-1">
+      <header class="tithe-hero">
+        <div class="tithe-dither" aria-hidden="true"></div>
+        <div class="container-xl tithe-hero__inner">
+          <h1 class="tithe-title">Tithe</h1>
+          <p class="tithe-hero__lead"></p>
+          <div class="tithe-status-line">
+            <span>In development</span>
+            <span>Private playtest</span>
+          </div>
+        </div>
       </header>
 
-      <p class="alert alert-secondary" data-os-label>Estimating this system…</p>
-      <p class="alert alert-danger" data-auth-error hidden></p>
+      <section class="tithe-gallery" aria-labelledby="tithe-gallery-title">
+        <div class="container-xl">
+          <div class="tithe-gallery__heading">
+            <h2 class="tithe-heading" id="tithe-gallery-title">Welcome</h2>
+          </div>
 
-      <section class="card" data-tithe-section="loading">
-        <div class="card-body">
-          <h2 class="card-title h4">Checking access</h2>
-          <p class="card-text">The site is checking your Steam session and Tithe whitelist state.</p>
+          <div class="tithe-shot-grid">
+            <figure class="tithe-shot tithe-shot--main">
+              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the first Tithe screenshot">
+                <img src="../assets/screenshots/cave-exploring.jpg" alt="">
+                <span>larp <3</span>
+              </div>
+            </figure>
+            <figure class="tithe-shot">
+              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the second Tithe screenshot">
+                <img src="../assets/screenshots/cave-crystal.jpg" alt="">
+                <span>vibe ahh</span>
+              </div>
+            </figure>
+            <figure class="tithe-shot">
+              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the third Tithe screenshot">
+                <img src="../assets/screenshots/cave-monster.jpg" alt="">
+                <span>ouu shi</span>
+              </div>
+            </figure>
+          </div>
         </div>
       </section>
 
-      <section class="card" data-tithe-section="anonymous" hidden>
-        <div class="card-body">
-          <h2 class="card-title h4">Steam login is required</h2>
-          <p class="card-text">You must sign in before the site can check your access.</p>
-          <a class="btn btn-primary" data-steam-login href="#login-not-configured">Sign in through Steam</a>
-        </div>
-      </section>
+      <section class="tithe-access">
+        <div class="container-xl">
+          <div class="tithe-access__heading">
+            <div>
+              <p class="tithe-kicker">Playtest gate</p>
+              <h2 class="tithe-heading">Early access</h2>
+            </div>
+            <p class="tithe-system" data-os-label>Estimating this system.</p>
+          </div>
 
-      <section class="card" data-tithe-section="denied" hidden>
-        <div class="card-body">
-          <h2 class="card-title h4">No early access</h2>
-          <p class="card-text">Your Steam login is valid, but this Steam ID is not on the Tithe whitelist.</p>
-          <p class="card-text">If you think this state is wrong, send your Steam ID to the Bitspire Studio team.</p>
-        </div>
-      </section>
+          <p class="alert alert-danger tithe-alert" data-auth-error hidden></p>
 
-      <section class="card" data-tithe-section="allowed" hidden>
-        <div class="card-body">
-          <h2 class="card-title h4">Early access builds</h2>
-          <p class="card-text" data-download-status>The site is loading the private build links.</p>
-          <div class="download-list" data-download-list></div>
-        </div>
-      </section>
+          <section class="tithe-panel" data-tithe-section="loading">
+            <p class="tithe-panel__index"></p>
+            <div>
+              <h3 class="tithe-heading">Checking access</h3>
+              <p class="mb-0">The site is checking your Steam session and Tithe whitelist state.</p>
+            </div>
+          </section>
 
-      <section class="card border-danger" data-tithe-section="error" hidden>
-        <div class="card-body">
-          <h2 class="card-title h4">The site could not check access</h2>
-          <p class="alert alert-danger mb-0" data-tithe-error></p>
+          <section class="tithe-panel" data-tithe-section="anonymous" hidden>
+            <p class="tithe-panel__index"></p>
+            <div>
+              <h3 class="tithe-heading">Steam login required</h3>
+              <p>You must sign in before the site can check your access.</p>
+              <a class="btn tithe-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
+            </div>
+          </section>
+
+          <section class="tithe-panel" data-tithe-section="denied" hidden>
+            <p class="tithe-panel__index"></p>
+            <div class="tithe-panel__content">
+              <h3 class="tithe-heading">Access not granted</h3>
+              <p>Your Steam login is valid, but your Steam ID is not on the Tithe whitelist.</p>
+              <p>Steam ID: <span data-steam-id></span></p>
+
+              <div class="tithe-request">
+                <div>
+                  <p class="tithe-kicker">Request access</p>
+                  <h4 class="tithe-heading">Join the playtest queue</h4>
+                  <p class="mb-0">Use this Steam account to ask for access to the Tithe playtest.</p>
+                </div>
+                <div class="tithe-request__action">
+                  <button class="btn tithe-button" type="button" disabled>Requests open soon</button>
+                  <small>This control does not send a request yet.</small>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tithe-panel tithe-panel--allowed" data-tithe-section="allowed" hidden>
+            <p class="tithe-panel__index"></p>
+            <div class="tithe-panel__content">
+              <div class="tithe-panel__heading">
+                <div>
+                  <p class="tithe-kicker">Approved account</p>
+                  <h3 class="tithe-heading">Current builds</h3>
+                </div>
+                <p class="mb-0" data-download-status>The site is loading the private build links.</p>
+              </div>
+              <div class="download-list" data-download-list></div>
+            </div>
+          </section>
+
+          <section class="tithe-panel tithe-panel--error" data-tithe-section="error" hidden>
+            <p class="tithe-panel__index">!</p>
+            <div>
+              <h3 class="tithe-heading">Access check failed</h3>
+              <p class="mb-0" data-tithe-error></p>
+            </div>
+          </section>
+
+          <aside class="tithe-note">
+            <span>Playtest notice</span>
+            <p>These builds are private development files. Do not share a build link outside the approved test group.</p>
+          </aside>
         </div>
       </section>
     </main>
 
-    <footer class="border-top mt-auto">
-      <div class="container-xl py-4 text-body-secondary">
-        Bitspire Studio account framework.
+    <footer class="tithe-footer">
+      <div class="container-xl tithe-footer__inner">
+        <a href="/">Bitspire Studio</a>
+        <span>Tithe is in development.</span>
       </div>
     </footer>
   </body>
