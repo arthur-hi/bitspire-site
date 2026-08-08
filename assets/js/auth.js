@@ -142,8 +142,8 @@ function renderAuthContext(context) {
   }
 
   const accessText = context.games.tithe.allowed
-    ? "Tithe early access: allowed"
-    : "Tithe early access: not allowed";
+    ? "Playtester"
+    : "";
 
   for (const element of document.querySelectorAll("[data-tithe-access]")) {
     element.textContent = accessText;
