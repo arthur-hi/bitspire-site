@@ -1,4 +1,4 @@
-import { getSiteUrl, requireEnv } from "../_shared/config.ts";
+import { getSiteUrl } from "../_shared/config.ts";
 import { makeRandomToken, sha256Hex } from "../_shared/crypto.ts";
 import { getAdminClient } from "../_shared/database.ts";
 import { errorResponse, HttpError, redirectResponse } from "../_shared/http.ts";
@@ -21,14 +21,11 @@ Deno.serve(async (request) => {
       throw new Error(`The server could not start the login: ${error.message}`);
     }
 
-    const supabaseUrl = new URL(requireEnv("SUPABASE_URL"));
-    const callbackUrl = new URL(
-      "/functions/v1/steam-auth-callback",
-      supabaseUrl,
-    );
+    const siteUrl = getSiteUrl();
+    const callbackUrl = new URL("/auth/steam-return/", siteUrl);
     callbackUrl.searchParams.set("state", state);
 
-    const realm = new URL("/", supabaseUrl);
+    const realm = new URL("/", siteUrl);
     const loginUrl = makeSteamLoginUrl(callbackUrl, realm);
     return redirectResponse(loginUrl);
   } catch (error) {

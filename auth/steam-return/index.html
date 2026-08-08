@@ -8,7 +8,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; connect-src 'self' https://qodebrpdmgqmdwtaysjf.supabase.co; img-src 'self'; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     >
-    <title>Steam login | Bitspire Studio</title>
+    <title>Steam return | Bitspire Studio</title>
     <link rel="preconnect" href="https://qodebrpdmgqmdwtaysjf.supabase.co" crossorigin>
     <link
       href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.2/css/halfmoon.min.css"
@@ -17,20 +17,20 @@
       crossorigin="anonymous"
     >
     <link rel="stylesheet" href="/assets/css/site.css">
-    <script type="module" src="/assets/js/callback.js"></script>
+    <script type="module" src="/assets/js/steam-return.js"></script>
   </head>
   <body class="min-vh-100 d-flex align-items-center">
     <main class="container py-5">
       <div class="card mx-auto page-copy" aria-live="polite">
         <div class="card-body p-4">
           <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="spinner-border text-primary" role="status" data-callback-spinner>
+            <div class="spinner-border text-primary" role="status" data-return-spinner>
               <span class="visually-hidden">Loading</span>
             </div>
-            <h1 class="card-title h3 mb-0">Steam login</h1>
+            <h1 class="card-title h3 mb-0">Steam return</h1>
           </div>
-          <p class="card-text mb-0" data-callback-status>Setting up your session.</p>
-          <p class="mb-0" data-callback-home hidden>
+          <p class="card-text mb-0" data-return-status>Verifying your Steam login.</p>
+          <p class="mb-0" data-return-home hidden>
             <a class="btn btn-outline-primary" href="/">Return to the home page</a>
           </p>
         </div>

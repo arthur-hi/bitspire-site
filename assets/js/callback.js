@@ -2,6 +2,7 @@ import { callFunction } from "./api.js";
 import { setSessionToken, takeLoginReturnPath } from "./session-store.js";
 
 const statusElement = document.querySelector("[data-callback-status]");
+const spinnerElement = document.querySelector("[data-callback-spinner]");
 const requestUrl = new URL(window.location.href);
 const code = requestUrl.searchParams.get("code");
 const errorCode = requestUrl.searchParams.get("error");
@@ -37,7 +38,9 @@ async function exchangeCode(loginCode) {
 }
 
 function showFailure(message) {
+  spinnerElement.hidden = true;
   statusElement.textContent = message;
+  statusElement.classList.add("mb-3");
   document.querySelector("[data-callback-home]").hidden = false;
 }
 

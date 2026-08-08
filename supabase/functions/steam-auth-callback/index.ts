@@ -1,4 +1,4 @@
-import { getSiteUrl, requireEnv } from "../_shared/config.ts";
+import { getSiteUrl } from "../_shared/config.ts";
 import { makeRandomToken, sha256Hex } from "../_shared/crypto.ts";
 import { getAdminClient } from "../_shared/database.ts";
 import { HttpError, redirectResponse } from "../_shared/http.ts";
@@ -21,8 +21,8 @@ Deno.serve(async (request) => {
 
     const stateHash = await sha256Hex(state);
     const expectedReturnTo = new URL(
-      "/functions/v1/steam-auth-callback",
-      requireEnv("SUPABASE_URL"),
+      "/auth/steam-return/",
+      getSiteUrl(),
     );
     expectedReturnTo.searchParams.set("state", state);
     const mode = requestUrl.searchParams.get("openid.mode");
@@ -57,7 +57,8 @@ Deno.serve(async (request) => {
 
     if (userError || !user) {
       throw new Error(
-        `The server could not save the user: ${userError?.message ?? "No user."
+        `The server could not save the user: ${
+          userError?.message ?? "No user."
         }`,
       );
     }
