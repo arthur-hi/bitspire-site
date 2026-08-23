@@ -77,28 +77,167 @@
       <section class="tithe-gallery" aria-labelledby="tithe-gallery-title">
         <div class="container-xl">
           <div class="tithe-gallery__heading">
-            <h2 class="tithe-heading" id="tithe-gallery-title">Welcome</h2>
+            <h2 class="tithe-heading" id="tithe-gallery-title">Gallery</h2>
           </div>
 
-          <div class="tithe-shot-grid">
-            <figure class="tithe-shot tithe-shot--main">
-              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the first Tithe screenshot">
-                <img src="../assets/screenshots/cave-exploring.jpg" alt="">
-                <span>larp <3</span>
+          <div class="tithe-gallery-container" id="tithe-gallery">
+            <div class="tithe-gallery-stage" tabindex="0" role="region">
+              <div class="tithe-gallery-main">
+                <img
+                  id="tithe-gallery-active-img"
+                  class="tithe-gallery-main__img"
+                >
+                <div class="tithe-gallery-vignette" aria-hidden="true"></div>
               </div>
-            </figure>
-            <figure class="tithe-shot">
-              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the second Tithe screenshot">
-                <img src="../assets/screenshots/cave-crystal.jpg" alt="">
-                <span>vibe ahh</span>
+
+              <button
+                class="tithe-gallery-arrow tithe-gallery-arrow--prev"
+                type="button"
+                aria-label="Previous screenshot"
+                data-gallery-prev
+              >
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                class="tithe-gallery-arrow tithe-gallery-arrow--next"
+                type="button"
+                aria-label="Next screenshot"
+                data-gallery-next
+              >
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+
+              <div class="tithe-gallery-stage__footer">
+                <span class="tithe-gallery-counter" data-gallery-counter>1 / 13</span>
+                <button
+                  class="tithe-gallery-fullscreen-btn"
+                  type="button"
+                  aria-label="View screenshot fullscreen"
+                  data-gallery-fullscreen
+                  title="Toggle fullscreen"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                </button>
               </div>
-            </figure>
-            <figure class="tithe-shot">
-              <div class="tithe-shot__frame" role="img" aria-label="Reserved space for the third Tithe screenshot">
-                <img src="../assets/screenshots/cave-monster.jpg" alt="">
-                <span>ouu shi</span>
+            </div>
+
+            <div class="tithe-gallery-thumbs-wrapper">
+              <div class="tithe-gallery-thumbs-strip" data-gallery-strip role="tablist">
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="0"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-1.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="1"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-2.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="2"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-3.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="3"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-4.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="4"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/rain.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="5"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/storm.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="6"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snow-sunrise.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="7"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snowstorm.jpg" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="8"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snow-displacement.jpg" loading="lazy">
+                </button>
               </div>
-            </figure>
+
+              <div class="tithe-gallery-slider-bar">
+                <button
+                  class="tithe-slider-nav-btn tithe-slider-nav-btn--left"
+                  type="button"
+                  aria-label="Scroll thumbnails left"
+                  data-strip-left
+                >
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+                    <polygon points="15,4 7,12 15,20"></polygon>
+                  </svg>
+                </button>
+                <div class="tithe-slider-track" data-strip-track aria-label="Thumbnail scroll position">
+                  <div class="tithe-slider-handle" data-strip-handle></div>
+                </div>
+                <button
+                  class="tithe-slider-nav-btn tithe-slider-nav-btn--right"
+                  type="button"
+                  aria-label="Scroll thumbnails right"
+                  data-strip-right
+                >
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+                    <polygon points="9,4 17,12 9,20"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

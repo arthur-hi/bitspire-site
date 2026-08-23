@@ -1,7 +1,9 @@
 import { callFunction } from "./api.js";
 import { getAuthContext } from "./auth.js";
 import { detectDesktopSystem } from "./os.js";
+import { initTitheGallery } from "./tithe-gallery.js";
 
+initTitheGallery();
 startTithePage();
 
 async function startTithePage() {

@@ -180,55 +180,265 @@
   line-height: 0.9;
 }
 
-.tithe-shot-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.tithe-shot {
-  margin: 0;
-}
-
-.tithe-shot--main {
-  grid-column: 1 / -1;
-}
-
-.tithe-shot__frame {
+.tithe-gallery-container {
   display: flex;
-  aspect-ratio: 16 / 9;
   flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.tithe-gallery-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--tithe-moss);
+  background-color: var(--tithe-soot);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+  outline: none;
+  user-select: none;
+}
+
+.tithe-gallery-stage:focus-visible {
+  border-color: var(--tithe-bone);
+}
+
+.tithe-gallery-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--tithe-moss);
-  color: var(--tithe-bone);
-  background-color: var(--tithe-soot);
-  background-image: url("/assets/textures/tithe-bayer.png");
-  background-size: 16px 16px;
-  box-shadow: inset 0 0 0 999px rgb(9 10 8 / 72%);
-  text-align: center;
-  text-transform: uppercase;
+  background-color: #000;
 }
 
-.tithe-shot__frame span {
-  font-family: "Morris Troy", Georgia, serif;
-  font-size: clamp(2.2rem, 6vw, 5rem);
-  line-height: 0.9;
-  text-transform: none;
-}
-
-.tithe-shot__frame small {
-  margin-top: 0.75rem;
-  color: var(--tithe-rust);
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-}
-
-.tithe-shot__frame img {
+.tithe-gallery-main__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: opacity 0.18s ease-in-out;
+}
+
+.tithe-gallery-main__img.is-switching {
+  opacity: 0.35;
+}
+
+.tithe-gallery-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 45px rgba(9, 10, 8, 0.6);
+}
+
+.tithe-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(221, 211, 184, 0.15);
+  color: var(--tithe-bone);
+  background: rgba(9, 10, 8, 0.45);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.tithe-gallery-arrow:hover,
+.tithe-gallery-arrow:focus-visible {
+  background: rgba(9, 10, 8, 0.85);
+  color: #fff;
+  border-color: var(--tithe-moss);
+}
+
+.tithe-gallery-arrow--prev {
+  left: 0;
+  border-left: none;
+}
+
+.tithe-gallery-arrow--next {
+  right: 0;
+  border-right: none;
+}
+
+.tithe-gallery-stage__footer {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 6;
+}
+
+.tithe-gallery-counter {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--tithe-ash);
+  color: var(--tithe-bone);
+  background: rgba(9, 10, 8, 0.8);
+  backdrop-filter: blur(4px);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tithe-gallery-fullscreen-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--tithe-ash);
+  color: var(--tithe-bone);
+  background: rgba(9, 10, 8, 0.8);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.tithe-gallery-fullscreen-btn:hover,
+.tithe-gallery-fullscreen-btn:focus-visible {
+  border-color: var(--tithe-moss);
+  background: rgba(20, 23, 18, 0.95);
+  color: #fff;
+}
+
+.tithe-gallery-stage:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+  border: none;
+}
+
+.tithe-gallery-stage:fullscreen .tithe-gallery-main__img {
+  object-fit: contain;
+}
+
+.tithe-gallery-thumbs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.tithe-gallery-thumbs-strip {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  padding: 2px 1px;
+}
+
+.tithe-gallery-thumbs-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.tithe-thumb-item {
+  flex: 0 0 clamp(96px, 13vw, 126px);
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  margin: 0;
+  border: 2px solid transparent;
+  background: var(--tithe-soot);
+  opacity: 0.6;
+  filter: brightness(0.85);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  overflow: hidden;
+}
+
+.tithe-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tithe-thumb-item:hover,
+.tithe-thumb-item:focus-visible {
+  opacity: 0.95;
+  filter: brightness(1.1);
+  border-color: var(--tithe-moss);
+}
+
+.tithe-thumb-item.is-active {
+  opacity: 1;
+  filter: brightness(1.2);
+  border: 2px solid #ffffff;
+  outline: 1px solid var(--tithe-rust);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+}
+
+.tithe-gallery-slider-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  height: 18px;
+}
+
+.tithe-slider-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid var(--tithe-ash);
+  color: var(--tithe-dim);
+  background: var(--tithe-soot);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tithe-slider-nav-btn:hover,
+.tithe-slider-nav-btn:focus-visible {
+  border-color: var(--tithe-moss);
+  color: var(--tithe-bone);
+  background: var(--tithe-ash);
+}
+
+.tithe-slider-track {
+  position: relative;
+  flex: 1;
+  height: 16px;
+  border: 1px solid var(--tithe-ash);
+  background: var(--tithe-soot);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.tithe-slider-handle {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  width: 48px;
+  border: 1px solid var(--tithe-moss);
+  background: #393e34;
+  cursor: grab;
+  transition: background 0.15s ease;
+}
+
+.tithe-slider-handle:hover,
+body.is-gallery-dragging .tithe-slider-handle {
+  background: var(--tithe-moss);
+  cursor: grabbing;
+}
+
+body.is-gallery-dragging {
+  user-select: none;
 }
 
 .tithe-access {
@@ -463,13 +673,13 @@
     grid-template-columns: 1fr;
   }
 
-  .tithe-gallery__heading,
-  .tithe-shot-grid {
+  .tithe-gallery__heading {
     grid-template-columns: 1fr;
   }
 
-  .tithe-shot--main {
-    grid-column: auto;
+  .tithe-gallery-arrow {
+    width: 36px;
+    height: 64px;
   }
 }
 
