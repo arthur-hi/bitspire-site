@@ -646,6 +646,204 @@ body.is-gallery-dragging {
   color: var(--tithe-bone);
 }
 
+.tithe-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem 1.25rem;
+}
+
+.tithe-footer__links a[aria-current="page"] {
+  color: var(--tithe-rust);
+  text-decoration-thickness: 2px;
+}
+
+.tithe-legal-page {
+  line-height: 1.65;
+}
+
+.tithe-legal__header {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+  border-bottom: 1px solid var(--tithe-ash);
+  background: var(--tithe-soot);
+}
+
+.tithe-legal__header .tithe-kicker {
+  margin-bottom: 1rem;
+}
+
+.tithe-legal__title {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--tithe-bone);
+  font-family: "Morris Troy", Georgia, serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 400;
+  line-height: 0.85;
+}
+
+.tithe-legal__summary {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  color: var(--tithe-dim);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.tithe-legal__date {
+  margin: 1rem 0 0;
+  color: var(--tithe-bone);
+}
+
+.tithe-legal__grid {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.28fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-top: clamp(3rem, 7vw, 6rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.tithe-legal__contents {
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding: 1.25rem;
+  border: 1px solid var(--tithe-ash);
+  background: var(--tithe-soot);
+}
+
+.tithe-legal__contents h2 {
+  margin: 0 0 1rem;
+  color: var(--tithe-bone);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tithe-legal__contents ol {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1.4rem;
+  color: var(--tithe-dim);
+  font-size: 0.9rem;
+}
+
+.tithe-legal__contents a,
+.tithe-legal__document a {
+  color: var(--tithe-bone);
+}
+
+.tithe-legal__contents a:hover,
+.tithe-legal__contents a:focus-visible,
+.tithe-legal__document a:hover,
+.tithe-legal__document a:focus-visible {
+  color: #fff;
+}
+
+.tithe-legal__document {
+  min-width: 0;
+  max-width: 52rem;
+}
+
+.tithe-legal__document section {
+  scroll-margin-top: 2rem;
+  padding: 0 0 clamp(2.5rem, 6vw, 4rem);
+}
+
+.tithe-legal__document section + section {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--tithe-ash);
+}
+
+.tithe-legal__document h2 {
+  margin: 0 0 1.25rem;
+  color: var(--tithe-bone);
+  font-family: "Morris Troy", Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.tithe-legal__document h3 {
+  margin: 2rem 0 0.75rem;
+  color: var(--tithe-bone);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tithe-legal__document p,
+.tithe-legal__document li,
+.tithe-legal__document dd {
+  color: var(--tithe-dim);
+}
+
+.tithe-legal__document p,
+.tithe-legal__document ul {
+  margin-bottom: 1.1rem;
+}
+
+.tithe-legal__document li + li {
+  margin-top: 0.45rem;
+}
+
+.tithe-legal__document strong,
+.tithe-legal__document dt {
+  color: var(--tithe-bone);
+}
+
+.tithe-legal__draft,
+.tithe-legal__callout {
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+  padding: 1.5rem;
+  border: 1px solid var(--tithe-rust);
+  background: var(--tithe-soot);
+}
+
+.tithe-legal__draft h2,
+.tithe-legal__callout h3 {
+  margin: 0 0 0.75rem;
+  color: var(--tithe-rust);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tithe-legal__draft p,
+.tithe-legal__callout p {
+  margin: 0;
+  color: var(--tithe-bone);
+}
+
+.tithe-legal__callout {
+  margin: 1.75rem 0;
+  border-color: var(--tithe-moss);
+}
+
+.tithe-legal__details {
+  margin: 1.5rem 0 0;
+  border-top: 1px solid var(--tithe-ash);
+}
+
+.tithe-legal__details div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--tithe-ash);
+}
+
+.tithe-legal__details dt,
+.tithe-legal__details dd {
+  margin: 0;
+}
+
 @media (max-width: 991.98px) {
   .tithe-page .download-list {
     grid-template-columns: 1fr;
@@ -681,6 +879,15 @@ body.is-gallery-dragging {
     width: 36px;
     height: 64px;
   }
+
+  .tithe-legal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tithe-legal__contents {
+    position: static;
+    max-height: none;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -690,5 +897,26 @@ body.is-gallery-dragging {
 
   .tithe-footer__inner {
     flex-direction: column;
+  }
+
+  .tithe-footer__links {
+    justify-content: flex-start;
+  }
+
+  .tithe-legal-page .studio-nav__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .tithe-legal-page .studio-nav__links {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .tithe-legal__details div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }

@@ -459,6 +459,24 @@ a {
   border-top: 1px solid var(--studio-line);
 }
 
+.studio-channel-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.studio-channel-link:hover,
+.studio-channel-link:focus-visible {
+  color: var(--studio-blue);
+  text-decoration: none;
+}
+
+.studio-channel-link:hover small,
+.studio-channel-link:focus-visible small {
+  color: var(--studio-paper);
+}
+
 .studio-footer {
   color: var(--studio-muted);
   background: #06070a;
@@ -467,9 +485,29 @@ a {
 .studio-footer__inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
+}
+
+.studio-footer a {
+  color: var(--studio-muted);
+  text-decoration: none;
+}
+
+.studio-footer a:hover,
+.studio-footer a:focus-visible {
+  color: var(--studio-paper);
+  text-decoration: underline;
+}
+
+.studio-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .page-copy {
