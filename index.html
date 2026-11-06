@@ -6,7 +6,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; connect-src 'self' https://qodebrpdmgqmdwtaysjf.supabase.co; img-src 'self' data: https://*.steamstatic.com https://*.akamaihd.net; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     >
     <title>Bitspire Studio</title>
     <meta name="description" content="Bitspire Studio is an independent game studio. We make video games.">
@@ -32,30 +32,6 @@
           <a class="studio-nav__link is-active" href="/" aria-current="page">Studio</a>
           <a class="studio-nav__link" href="/tithe/">Tithe</a>
         </div>
-
-        <div class="studio-account" aria-live="polite">
-          <span class="studio-account__loading" data-auth-loading>Checking sign-in status.</span>
-          <div data-auth-anonymous hidden>
-            <a class="btn btn-light studio-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
-          </div>
-          <div class="studio-account__user" data-auth-user hidden>
-            <img
-              class="account-avatar"
-              data-steam-avatar
-              src="/assets/avatar-placeholder.svg"
-              width="40"
-              height="40"
-              alt=""
-            >
-            <span class="studio-account__copy">
-              <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">
-                <span data-steam-name>Steam user</span>
-              </a>
-              <small data-tithe-access>Tithe access status is unknown.</small>
-            </span>
-            <button class="btn btn-outline-light btn-sm studio-button" type="button" data-logout>Log out</button>
-          </div>
-        </div>
       </div>
     </nav>
 
@@ -67,23 +43,31 @@
             <p class="studio-hero__lead">
               Bitspire Studio is an independent team of friends making games. Our first game is Tithe, a retro dark fantasy co-op with tense and funny moments for you and your friends.
             </p>
-            <p class="alert alert-danger studio-alert" data-auth-error hidden></p>
             <a class="btn btn-light btn-lg studio-button" href="#games">View games</a>
           </div>
 
           <div class="paper-stack-wrap">
             <div class="paper-stack" id="hero-screenshot-stack" aria-label="Tithe gameplay screenshots stack" role="region">
               <div class="paper-card" data-stack-pos="0">
-                <img src="/assets/screenshots/outside-sunrise.jpg" alt="Game screenshot: sunrise landscape" loading="eager">
+                <img src="/assets/screenshots/rootmar-sunrise.png" alt="Glowing crystal among standing stones at sunrise in Rootmar" loading="eager">
               </div>
               <div class="paper-card" data-stack-pos="1">
-                <img src="/assets/screenshots/cave-crystal.jpg" alt="Game screenshot: crystal cave" loading="lazy">
+                <img src="/assets/screenshots/citadel-guard-1.png" alt="Armoured Citadel guard holding a sword in firelight" loading="lazy" decoding="async">
               </div>
               <div class="paper-card" data-stack-pos="2">
-                <img src="/assets/screenshots/cave-exploring.jpg" alt="Game screenshot: cave exploration" loading="lazy">
+                <img src="/assets/screenshots/rootmar-rain.png" alt="Heavy rain over a flooded forest in Rootmar" loading="lazy" decoding="async">
               </div>
               <div class="paper-card" data-stack-pos="3">
-                <img src="/assets/screenshots/cave-monster.jpg" alt="Game screenshot: monster encounter" loading="lazy">
+                <img src="/assets/screenshots/rootmar-companion.png" alt="Companion lit by a glowing crystal in Rootmar" loading="lazy" decoding="async">
+              </div>
+              <div class="paper-card" data-stack-pos="4">
+                <img src="/assets/screenshots/citadel-companion.png" alt="Companion in the Citadel" loading="lazy" decoding="async">
+              </div>
+              <div class="paper-card" data-stack-pos="5">
+                <img src="/assets/screenshots/rootmar-skeleton.png" alt="Skeleton in Rootmar" loading="lazy" decoding="async">
+              </div>
+              <div class="paper-card" data-stack-pos="6">
+                <img src="/assets/screenshots/citadel-guard-2.png" alt="Another view of the Citadel guard" loading="lazy" decoding="async">
               </div>
             </div>
           </div>
@@ -97,15 +81,14 @@
           </div>
 
           <a class="studio-game" href="/tithe/">
-            <span class="studio-game__number" aria-hidden="true">
-              <span class="studio-game__status">Private playtest.<br><br></span>
-            </span>
+            <span class="studio-game__status">In development</span>
             <span class="studio-game__copy">
-              <strong>Tithe</strong>
+              <img class="tithe-wordmark studio-game__logo" src="/assets/steam/library-logo-transparent.png" width="1280" height="720" alt="Tithe" loading="lazy">
               <span>A retro dark fantasy cooperative game.</span>
             </span>
-            <span class="studio-game__action">Open Tithe <span aria-hidden="true">→</span></span>
+            <span class="studio-game__action">Open Tithe</span>
           </a>
+          <a class="btn btn-outline-light studio-button mt-3" data-tithe-steam-link hidden>Tithe on Steam</a>
         </div>
       </section>
 
@@ -171,7 +154,7 @@
       <div class="container-xl studio-footer__inner">
         <div>
           <span>Bitspire Studio</span>
-          <span> — Independent game studio</span>
+          <span> - Independent game studio</span>
         </div>
         <div class="studio-footer__links">
           <a href="https://www.youtube.com/@bitspirestudio" target="_blank" rel="noopener noreferrer">YouTube</a>

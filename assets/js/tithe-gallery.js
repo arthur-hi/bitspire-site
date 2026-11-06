@@ -8,6 +8,7 @@ export function initTitheGallery() {
   const counter = container.querySelector("[data-gallery-counter]");
   const fullscreenBtn = container.querySelector("[data-gallery-fullscreen]");
   const stage = container.querySelector(".tithe-gallery-stage");
+  const media = container.querySelector(".tithe-gallery-main");
   const thumbsStrip = container.querySelector("[data-gallery-strip]");
   const thumbs = Array.from(container.querySelectorAll("[data-gallery-thumb]"));
 
@@ -16,36 +17,90 @@ export function initTitheGallery() {
   const stripTrack = container.querySelector("[data-strip-track]");
   const stripHandle = container.querySelector("[data-strip-handle]");
 
-  if (!mainImg || thumbs.length === 0) return;
+  if (!stage || !media || !mainImg || thumbs.length === 0) return;
 
-  let currentIndex = 0;
+  let currentIndex = -1;
+  let player;
   const total = thumbs.length;
 
   const items = thumbs.map((thumb) => {
     const img = thumb.querySelector("img");
+    const videoId = thumb.dataset.youtubeVideoId?.trim();
+    const hasVideo = /^[\w-]{11}$/.test(videoId || "");
+    if (hasVideo) {
+      thumb.classList.add("is-video");
+      thumb.setAttribute("aria-label", "Tithe trailer");
+    }
     return {
-      src: img ? img.getAttribute("src") : "",
-      alt: img ? img.getAttribute("alt") || "Tithe screenshot" : "Tithe screenshot"
+      src: img?.getAttribute("src"),
+      alt: img?.alt || "Tithe screenshot",
+      videoId: hasVideo ? videoId : null
     };
   });
 
+  // Start playback only when most of the player is visible.
+  const playbackThreshold = 0.51;
+  const playerObserver = items.some((item) => item.videoId) && window.IntersectionObserver
+    ? new IntersectionObserver((entries) => {
+        if (entries.at(-1)?.intersectionRatio >= playbackThreshold) mountPlayer();
+      }, { threshold: playbackThreshold })
+    : null;
+
+  function mountPlayer() {
+    const videoId = items[currentIndex]?.videoId;
+    if (!videoId || player) return;
+
+    playerObserver?.disconnect();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const autoplay = playerObserver && !reduceMotion ? "1" : "0";
+    player = document.createElement("iframe");
+    player.className = "tithe-gallery-main__video";
+    player.title = "Tithe trailer on YouTube";
+    player.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";
+    player.allowFullscreen = true;
+    player.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=${autoplay}&mute=1&playsinline=1`;
+    mainImg.hidden = true;
+    media.append(player);
+  }
+
+  function showScreenshot(item) {
+    mainImg.hidden = false;
+    if (!item.src || mainImg.getAttribute("src") === item.src) {
+      mainImg.classList.remove("is-switching");
+      return;
+    }
+
+    mainImg.classList.add("is-switching");
+    const image = new Image();
+    const displayImage = () => {
+      if (items[currentIndex] !== item) return;
+      mainImg.src = item.src;
+      mainImg.alt = item.alt;
+      mainImg.classList.remove("is-switching");
+    };
+    image.onload = displayImage;
+    image.onerror = displayImage;
+    image.src = item.src;
+  }
+
   function updateGallery(index, smoothScrollThumb = true) {
-    currentIndex = (index + total) % total;
+    const nextIndex = (index + total) % total;
+    if (nextIndex === currentIndex) return;
+    currentIndex = nextIndex;
+
+    playerObserver?.disconnect();
+    player?.remove();
+    player = null;
 
     const currentItem = items[currentIndex];
-    if (currentItem && currentItem.src) {
-      mainImg.classList.add("is-switching");
-      const tempImg = new Image();
-      tempImg.onload = () => {
-        mainImg.src = currentItem.src;
-        mainImg.alt = currentItem.alt;
-        mainImg.classList.remove("is-switching");
-      };
-      tempImg.onerror = () => {
-        mainImg.src = currentItem.src;
-        mainImg.classList.remove("is-switching");
-      };
-      tempImg.src = currentItem.src;
+    stage.classList.toggle("is-video", Boolean(currentItem.videoId));
+    showScreenshot(currentItem);
+    if (currentItem.videoId) {
+      if (playerObserver) {
+        playerObserver.observe(media);
+      } else {
+        mountPlayer();
+      }
     }
 
     if (counter) {

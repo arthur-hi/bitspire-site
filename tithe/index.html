@@ -6,7 +6,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; connect-src 'self' https://qodebrpdmgqmdwtaysjf.supabase.co; img-src 'self' data: https://*.steamstatic.com https://*.akamaihd.net; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     >
     <title>Tithe | Bitspire Studio</title>
     <meta name="description" content="Tithe is a retro dark fantasy co-op game from Bitspire Studio.">
@@ -34,30 +34,6 @@
           <a class="studio-nav__link" href="/">Studio</a>
           <a class="studio-nav__link is-active" href="/tithe/" aria-current="page">Tithe</a>
         </div>
-
-        <div class="studio-account" aria-live="polite">
-          <span class="studio-account__loading" data-auth-loading>Checking sign-in.</span>
-          <div data-auth-anonymous hidden>
-            <a class="btn tithe-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
-          </div>
-          <div class="studio-account__user" data-auth-user hidden>
-            <img
-              class="account-avatar"
-              data-steam-avatar
-              src="/assets/avatar-placeholder.svg"
-              width="40"
-              height="40"
-              alt=""
-            >
-            <span class="studio-account__copy">
-              <a data-steam-profile href="https://steamcommunity.com/" target="_blank" rel="noopener noreferrer">
-                <span data-steam-name>Steam user</span>
-              </a>
-              <small data-tithe-access>Tithe access is unknown.</small>
-            </span>
-            <button class="btn btn-sm tithe-button tithe-button--quiet" type="button" data-logout>Log out</button>
-          </div>
-        </div>
       </div>
     </nav>
 
@@ -65,11 +41,12 @@
       <header class="tithe-hero">
         <div class="tithe-dither" aria-hidden="true"></div>
         <div class="container-xl tithe-hero__inner">
-          <h1 class="tithe-title">Tithe</h1>
-          <p class="tithe-hero__lead"></p>
+          <h1 class="tithe-title">
+            <img class="tithe-wordmark" src="/assets/steam/library-logo-transparent.png" width="1280" height="720" alt="Tithe">
+          </h1>
           <div class="tithe-status-line">
-            <span>In development</span>
-            <span>Private playtest</span>
+            <span class="tithe-status">In development</span>
+            <a class="btn tithe-button" data-tithe-steam-link hidden>Tithe on Steam</a>
           </div>
         </div>
       </header>
@@ -81,11 +58,13 @@
           </div>
 
           <div class="tithe-gallery-container" id="tithe-gallery">
-            <div class="tithe-gallery-stage" tabindex="0" role="region">
+            <div class="tithe-gallery-stage" tabindex="0" role="region" aria-label="Tithe gallery viewer">
               <div class="tithe-gallery-main">
                 <img
                   id="tithe-gallery-active-img"
                   class="tithe-gallery-main__img"
+                  src="/assets/screenshots/rootmar-sunrise.png"
+                  alt="Sunrise in Rootmar"
                 >
                 <div class="tithe-gallery-vignette" aria-hidden="true"></div>
               </div>
@@ -93,7 +72,7 @@
               <button
                 class="tithe-gallery-arrow tithe-gallery-arrow--prev"
                 type="button"
-                aria-label="Previous screenshot"
+                aria-label="Previous gallery item"
                 data-gallery-prev
               >
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -103,7 +82,7 @@
               <button
                 class="tithe-gallery-arrow tithe-gallery-arrow--next"
                 type="button"
-                aria-label="Next screenshot"
+                aria-label="Next gallery item"
                 data-gallery-next
               >
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -112,11 +91,11 @@
               </button>
 
               <div class="tithe-gallery-stage__footer">
-                <span class="tithe-gallery-counter" data-gallery-counter>1 / 13</span>
+                <span class="tithe-gallery-counter" data-gallery-counter>1 / 20</span>
                 <button
                   class="tithe-gallery-fullscreen-btn"
                   type="button"
-                  aria-label="View screenshot fullscreen"
+                  aria-label="Toggle gallery fullscreen"
                   data-gallery-fullscreen
                   title="Toggle fullscreen"
                 >
@@ -128,15 +107,21 @@
             </div>
 
             <div class="tithe-gallery-thumbs-wrapper">
-              <div class="tithe-gallery-thumbs-strip" data-gallery-strip role="tablist">
+              <div class="tithe-gallery-thumbs-strip" data-gallery-strip role="tablist" aria-label="Gallery items">
                 <button
                   type="button"
                   role="tab"
                   class="tithe-thumb-item"
                   data-gallery-thumb="0"
-                  aria-selected="false"
+                  data-youtube-video-id=""
+                  aria-selected="true"
                 >
-                  <img src="/assets/screenshots/gameplay-1.jpg" loading="lazy">
+                  <img src="/assets/screenshots/rootmar-sunrise.png" alt="Sunrise in Rootmar" loading="lazy" decoding="async">
+                  <span class="tithe-thumb-item__play" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" width="12" height="12" fill="currentColor">
+                      <polygon points="3,1 11,6 3,11"></polygon>
+                    </svg>
+                  </span>
                 </button>
                 <button
                   type="button"
@@ -145,7 +130,7 @@
                   data-gallery-thumb="1"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/gameplay-2.jpg" loading="lazy">
+                  <img src="/assets/screenshots/citadel-companion.png" alt="Companion in the Citadel" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -154,7 +139,7 @@
                   data-gallery-thumb="2"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/gameplay-3.jpg" loading="lazy">
+                  <img src="/assets/screenshots/citadel-guard-1.png" alt="Citadel guard, first view" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -163,7 +148,7 @@
                   data-gallery-thumb="3"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/gameplay-4.jpg" loading="lazy">
+                  <img src="/assets/screenshots/citadel-guard-2.png" alt="Citadel guard, second view" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -172,7 +157,7 @@
                   data-gallery-thumb="4"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/rain.jpg" loading="lazy">
+                  <img src="/assets/screenshots/rootmar-companion.png" alt="Companion in Rootmar" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -181,7 +166,7 @@
                   data-gallery-thumb="5"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/storm.jpg" loading="lazy">
+                  <img src="/assets/screenshots/rootmar-rain.png" alt="Rain in Rootmar" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -190,7 +175,7 @@
                   data-gallery-thumb="6"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/snow-sunrise.jpg" loading="lazy">
+                  <img src="/assets/screenshots/rootmar-skeleton.png" alt="Skeleton in Rootmar" loading="lazy" decoding="async">
                 </button>
                 <button
                   type="button"
@@ -199,7 +184,7 @@
                   data-gallery-thumb="7"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/snowstorm.jpg" loading="lazy">
+                  <img src="/assets/screenshots/gameplay-1.jpg" alt="Tithe gameplay screenshot" loading="lazy">
                 </button>
                 <button
                   type="button"
@@ -208,7 +193,106 @@
                   data-gallery-thumb="8"
                   aria-selected="false"
                 >
-                  <img src="/assets/screenshots/snow-displacement.jpg" loading="lazy">
+                  <img src="/assets/screenshots/gameplay-2.jpg" alt="Tithe gameplay screenshot 2" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="9"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-3.jpg" alt="Tithe gameplay screenshot 3" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="10"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/gameplay-4.jpg" alt="Tithe gameplay screenshot 4" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="11"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/rain.jpg" alt="Rain in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="12"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/storm.jpg" alt="Storm in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="13"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snow-sunrise.jpg" alt="Snowy sunrise in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="14"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snowstorm.jpg" alt="Snowstorm in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="15"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/snow-displacement.jpg" alt="Snow detail in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="16"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/outside-sunrise.jpg" alt="Sunrise outdoors in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="17"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/cave-crystal.jpg" alt="Crystals in a Tithe cave" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="18"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/cave-exploring.jpg" alt="Exploring a cave in Tithe" loading="lazy">
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tithe-thumb-item"
+                  data-gallery-thumb="19"
+                  aria-selected="false"
+                >
+                  <img src="/assets/screenshots/cave-monster.jpg" alt="Monster in a Tithe cave" loading="lazy">
                 </button>
               </div>
 
@@ -239,85 +323,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="tithe-access" id="builds">
-        <div class="container-xl">
-          <div class="tithe-access__heading">
-            <div>
-              <p class="tithe-kicker">Playtest gate</p>
-              <h2 class="tithe-heading">Early access</h2>
-            </div>
-            <p class="tithe-system" data-os-label>Estimating this system.</p>
-          </div>
-
-          <p class="alert alert-danger tithe-alert" data-auth-error hidden></p>
-
-          <section class="tithe-panel" data-tithe-section="loading">
-            <p class="tithe-panel__index"></p>
-            <div>
-              <h3 class="tithe-heading">Checking access</h3>
-              <p class="mb-0">The site is checking your Steam session and Tithe whitelist state.</p>
-            </div>
-          </section>
-
-          <section class="tithe-panel" data-tithe-section="anonymous" hidden>
-            <p class="tithe-panel__index"></p>
-            <div>
-              <h3 class="tithe-heading">Steam login required</h3>
-              <p>You must sign in before the site can check your access.</p>
-              <a class="btn tithe-button" data-steam-login href="#login-not-configured">Sign in with Steam</a>
-            </div>
-          </section>
-
-          <section class="tithe-panel" data-tithe-section="denied" hidden>
-            <p class="tithe-panel__index"></p>
-            <div class="tithe-panel__content">
-              <h3 class="tithe-heading">Access not granted</h3>
-              <p>Your Steam login is valid, but your Steam ID is not on the Tithe whitelist.</p>
-              <p>Steam ID: <span data-steam-id></span></p>
-
-              <div class="tithe-request">
-                <div>
-                  <p class="tithe-kicker">Request access</p>
-                  <h4 class="tithe-heading">Join the playtest queue</h4>
-                  <p class="mb-0">Use this Steam account to ask for access to the Tithe playtest.</p>
-                </div>
-                <div class="tithe-request__action">
-                  <button class="btn tithe-button" type="button" disabled>Requests open soon</button>
-                  <small>This control does not send a request yet.</small>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="tithe-panel tithe-panel--allowed" data-tithe-section="allowed" hidden>
-            <p class="tithe-panel__index"></p>
-            <div class="tithe-panel__content">
-              <div class="tithe-panel__heading">
-                <div>
-                  <p class="tithe-kicker">Approved account</p>
-                  <h3 class="tithe-heading">Current builds</h3>
-                </div>
-                <p class="mb-0" data-download-status>The site is loading the private build links.</p>
-              </div>
-              <div class="download-list" data-download-list></div>
-            </div>
-          </section>
-
-          <section class="tithe-panel tithe-panel--error" data-tithe-section="error" hidden>
-            <p class="tithe-panel__index">!</p>
-            <div>
-              <h3 class="tithe-heading">Access check failed</h3>
-              <p class="mb-0" data-tithe-error></p>
-            </div>
-          </section>
-
-          <aside class="tithe-note">
-            <span>Playtest notice</span>
-            <p>These builds are private development files. Do not share a build link outside the approved test group.</p>
-          </aside>
         </div>
       </section>
     </main>

@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir pages-output
           cp index.html 404.html CNAME pages-output/
-          cp -R assets auth tithe pages-output/
+          cp -R assets tithe pages-output/
 
       - name: Upload the site files
         uses: actions/upload-pages-artifact@v4

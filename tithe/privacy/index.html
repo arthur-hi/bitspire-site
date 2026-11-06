@@ -39,7 +39,7 @@
     <main class="tithe-legal flex-grow-1">
       <header class="tithe-legal__header">
         <div class="container-xl">
-          <p class="tithe-kicker">Tithe legal information</p>
+          <img class="tithe-wordmark tithe-legal__logo" src="/assets/steam/library-logo-transparent.png" width="1280" height="720" alt="Tithe">
           <h1 class="tithe-legal__title">Privacy Policy</h1>
           <p class="tithe-legal__summary">This policy explains what personal data Tithe handles and why it handles the data.</p>
           <p class="tithe-legal__date"><strong>Effective date:</strong> 30 August 2026</p>
@@ -75,15 +75,15 @@
         <article class="tithe-legal__document">
           <section id="scope">
             <h2>1. Scope and who is responsible</h2>
-            <p>This Privacy Policy explains how Bitspire Studio handles personal data. In this policy, “Bitspire”, “we”, “us”, and “our” mean Bitspire Studio.</p>
+            <p>This Privacy Policy explains how Bitspire Studio handles personal data. In this policy, "Bitspire", "we", "us", and "our" mean Bitspire Studio.</p>
             <p>This policy applies to these services:</p>
             <ul>
               <li>Tithe, including test, preview, early-access, and release versions of the game;</li>
-              <li>the official Tithe and Bitspire Studio pages at bitspire.studio, including Steam sign-in and playtest access;</li>
+              <li>the official Tithe and Bitspire Studio pages at bitspire.studio;</li>
               <li>Tithe multiplayer, voice chat, text chat, lobbies, achievements, and related online functions; and</li>
               <li>the Tithe Discord application and integration, including Rich Presence, invitations, and join functions.</li>
             </ul>
-            <p>In this policy, “Game” means Tithe. “Site” means the official pages at bitspire.studio. “Discord Integration” means the Tithe functions for Discord. “Services” means the Game, Site, online functions, and Discord Integration together.</p>
+            <p>In this policy, "Game" means Tithe. "Site" means the official pages at bitspire.studio. "Discord Integration" means the Tithe functions for Discord. "Services" means the Game, Site, online functions, and Discord Integration together.</p>
             <p>Bitspire is the data controller when it decides why and how it processes personal data.</p>
             <dl class="tithe-legal__details">
               <div><dt>Controller</dt><dd>Bitspire Studio</dd></div>
@@ -101,7 +101,7 @@
               <li>During multiplayer, the Game sends necessary player, gameplay, text-chat, and voice data to the host and other players.</li>
               <li>The Game processes voice in real time for proximity chat. The inspected build does not intentionally record ordinary voice chat or send it to Bitspire for storage.</li>
               <li>The inspected build keeps ordinary text chat in memory. It shows up to 100 recent lines. It does not intentionally write these lines to a Bitspire chat database.</li>
-              <li>The Services use Steam for Site sign-in, playtest access, lobbies, network relay, identity, persona information, and achievements.</li>
+              <li>The Game can use Steam for lobbies, network relay, identity, persona information, and achievements. The Site's Steam sign-in and private playtest access are disabled.</li>
               <li>When you enable the Discord Integration, it sends limited live activity data to Discord. Discord uses this data for Rich Presence, invitations, and joining.</li>
               <li>Bitspire does not sell personal data.</li>
               <li>Bitspire does not use personal data for third-party behavioural advertising.</li>
@@ -160,11 +160,11 @@
               <li>Each receiving client applies spectator and mute rules before playback.</li>
             </ul>
             <p>The acoustic data describes the sound environment in the Game. It can describe an enclosure or room effect. It does not describe the physical location or acoustic profile of your real room.</p>
-            <p>The inspected build does not intentionally record ordinary voice chat to disk. It does not send ordinary voice chat to Bitspire for storage. A development audio tool can record the Game’s main audio output. This tool operates only when a command-line option starts it. Other players can record a session with external tools. Bitspire does not control their recordings.</p>
+            <p>The inspected build does not intentionally record ordinary voice chat to disk. It does not send ordinary voice chat to Bitspire for storage. A development audio tool can record the Game's main audio output. This tool operates only when a command-line option starts it. Other players can record a session with external tools. Bitspire does not control their recordings.</p>
             <p>Your voice can reveal sensitive information. Do not say or type information that you do not want other players to receive.</p>
 
             <h3>3.6 Network information</h3>
-            <p>For local network play, the Game broadcasts the host device name on the local network. It shows the sender’s local IP address to clients that search for sessions. During a direct connection, a host or peer can receive IP addresses and connection data.</p>
+            <p>For local network play, the Game broadcasts the host device name on the local network. It shows the sender's local IP address to clients that search for sessions. During a direct connection, a host or peer can receive IP addresses and connection data.</p>
             <p>For Steam multiplayer, Steam networking and relay services process connection and lobby data. Valve policies apply. A relay can reduce direct IP exposure. Bitspire does not control the Steam network design.</p>
           </section>
 
@@ -191,26 +191,26 @@
             <h2>5. Steam and the Site</h2>
 
             <h3>5.1 Steam sign-in</h3>
-            <p>The Site uses Steam sign-in to confirm your Steam identity. After sign-in, the Site and its Supabase authentication functions can process:</p>
+            <p>Steam sign-in is currently disabled on the Site. When it was available, the Site used it to confirm your Steam identity. The Site and its Supabase authentication functions could process the following data during and after sign-in.</p>
             <ul>
               <li>your Steam ID and persona name;</li>
               <li>your Steam profile and avatar URLs;</li>
-              <li>public Steam profile data that the sign-in and display process returns;</li>
-              <li>whether your Steam account is on the Tithe playtest list;</li>
-              <li>whether Tithe is available through Steam and whether downloads are enabled; and</li>
-              <li>a Bitspire session token that keeps you signed in.</li>
+              <li>public Steam profile data that the sign-in and display process returned;</li>
+              <li>whether your Steam account was on the Tithe playtest list;</li>
+              <li>whether Tithe was available through Steam and whether downloads were enabled; and</li>
+              <li>a Bitspire session token that kept you signed in.</li>
             </ul>
-            <p>The Site stores the session token in browser local storage. It temporarily stores the sign-in return path in session storage. When you log out, the Site removes the token from browser storage. It also asks the authentication service to invalidate the session. You can clear stored Site data in your browser settings.</p>
-            <p>The Site does not receive your Steam password. Steam handles your credentials and returns an authentication result.</p>
+            <p>The Site stored the session token in browser local storage and temporarily stored the sign-in return path in session storage. When you logged out, the Site removed the token from browser storage and asked the authentication service to invalidate the session. You can clear any remaining Site data in your browser settings.</p>
+            <p>The Site did not receive your Steam password. Steam handled your credentials and returned an authentication result.</p>
 
             <h3>5.2 Playtest access and downloads</h3>
-            <p>The Site compares your authenticated Steam ID with the Tithe access list. The result allows or denies access. For an approved account, the Site can provide a private build link or Steam link. If you think the result is wrong, ask Bitspire for a human review.</p>
-            <p>The Site can send an approved user to Steam, Google Drive, or another authorised distributor. The provider receives the usual data when you follow a link or request a download. Its privacy policy applies.</p>
+            <p>Private playtest access checks and downloads are currently disabled on the Site. When these features were available, the Site compared your authenticated Steam ID with the Tithe access list and could provide an approved account with a private build link or Steam link.</p>
+            <p>The Site could send an approved user to Steam, Google Drive, or another authorised distributor. The provider receives the usual data when you follow a link or request a download. Its privacy policy applies.</p>
 
             <h3>5.3 Device and log data</h3>
-            <p>The Site estimates your operating-system family in your browser. It uses the estimate to suggest a compatible build. Your browser provides platform, user-agent, and touch data for this local estimate. Bitspire does not intentionally send the estimate to its authentication service only to show this suggestion.</p>
-            <p>Hosting and backend providers can process request data. This data can include an IP address, user agent, request time, URL, response status, and security or error log. GitHub Pages hosts bitspire.studio. Supabase hosts the authentication and access functions.</p>
-            <p>The Site uses browser local storage and session storage for authentication and navigation state. It does not currently use third-party advertising cookies or behavioural analytics. If this changes, Bitspire will update this policy. It will also provide cookie or consent controls when the law requires them.</p>
+            <p>When the Site offered private downloads, it estimated your operating-system family in your browser to suggest a compatible build. Your browser provided platform, user-agent, and touch data for this local estimate. Bitspire did not intentionally send the estimate to its authentication service only to show this suggestion.</p>
+            <p>Hosting and backend providers can process request data. This data can include an IP address, user agent, request time, URL, response status, and security or error log. GitHub Pages hosts bitspire.studio. Bitspire used Supabase for the Site's authentication and access functions.</p>
+            <p>The Site does not currently use third-party advertising cookies or behavioural analytics. If this changes, Bitspire will update this policy. It will also provide cookie or consent controls when the law requires them.</p>
           </section>
 
           <section id="steam-game">
@@ -224,7 +224,7 @@
               <li>achievement status and updates; and</li>
               <li>distribution, updates, purchases, and platform support.</li>
             </ul>
-            <p>People who search for Tithe lobbies can see public lobby names. The default lobby name can use the host’s Steam persona name. Local network discovery can use the host device name. You can edit the lobby name before you host. Do not put personal data in a lobby name or player name.</p>
+            <p>People who search for Tithe lobbies can see public lobby names. The default lobby name can use the host's Steam persona name. Local network discovery can use the host device name. You can edit the lobby name before you host. Do not put personal data in a lobby name or player name.</p>
             <p>Valve processes Steam data under the Steam Privacy Policy and Steam Subscriber Agreement.</p>
           </section>
 
@@ -232,13 +232,13 @@
             <h2>7. How we use information and our legal bases</h2>
             <p>Data-protection law can require Bitspire to state a lawful basis. Bitspire uses personal data for these purposes and bases:</p>
             <ul>
-              <li><strong>To provide the Services.</strong> Bitspire uses data to perform its contract with you. This includes Steam sign-in, access checks, multiplayer identity, synchronisation, chat, Discord functions, and support.</li>
+              <li><strong>To provide the Services.</strong> Bitspire uses data to perform its contract with you. This includes multiplayer identity, synchronisation, chat, Discord functions, and support. This also covered Site sign-in and access checks when those features were available.</li>
               <li><strong>To follow your choices.</strong> Bitspire uses consent when the law requires it. This can apply to microphone permission, optional Discord functions, and future optional processing. You can withdraw consent at any time. This does not change processing that occurred before withdrawal.</li>
               <li><strong>To secure and improve the Services.</strong> Bitspire has legitimate interests in access control, fault diagnosis, user and system protection, term enforcement, compatibility, and performance. Bitspire balances these interests against your rights. It does not use this basis when your rights override its interests.</li>
               <li><strong>To meet legal duties.</strong> Bitspire can process data for a valid legal request, consumer law, applicable tax or accounting duties, and legal claims.</li>
               <li><strong>To protect vital interests.</strong> Bitspire can process data during a rare emergency with an immediate risk to life or safety.</li>
             </ul>
-            <p>The law does not usually require you to provide a player name, microphone audio, Steam data, Discord data, or the other data in this policy. However, a function can need some data. Steam identity is necessary for Steam sign-in and lobbies. Multiplayer needs network and player data. Voice chat needs microphone data. Rich Presence needs activity data. If you do not provide necessary data, that function might not work. Other parts of Tithe can remain available.</p>
+            <p>The law does not usually require you to provide a player name, microphone audio, Steam data, Discord data, or the other data in this policy. However, a function can need some data. Steam identity is necessary for Steam lobbies. Multiplayer needs network and player data. Voice chat needs microphone data. Rich Presence needs activity data. If you do not provide necessary data, that function might not work. Other parts of Tithe can remain available.</p>
           </section>
 
           <section id="sharing">
@@ -248,7 +248,7 @@
               <li>Multiplayer hosts and players receive necessary identity, character, gameplay, chat, voice, connection, and session data.</li>
               <li>Valve processes authentication, persona, lobby, network relay, achievement, distribution, purchase, and platform data.</li>
               <li>Discord processes Rich Presence, account, invitation, join, and related data when you enable the Discord Integration.</li>
-              <li>Supabase hosts Site authentication, sessions, playtest access, and the related database.</li>
+              <li>Supabase provided Site authentication, session, and playtest-access services and can retain related records.</li>
               <li>GitHub Pages hosts and delivers the public Site.</li>
               <li>Google Drive or another authorised provider can host private build downloads.</li>
               <li>Professional advisers and technical providers can receive limited data when they need it. Appropriate confidentiality duties apply.</li>
@@ -273,7 +273,7 @@
               <li>Each client keeps up to 100 recent text-chat lines in memory. The inspected build does not intentionally keep them after the process ends.</li>
               <li>The Game buffers and sends ordinary voice audio in real time. Bitspire does not intentionally keep ordinary voice history. The Game overwrites the short buffers during use or when processing stops.</li>
               <li>Discord Rich Presence exists while the Game and integration are active. Bitspire does not intend to store a separate history.</li>
-              <li>A Site session token stays in browser local storage until logout, expiry, invalidation, or manual deletion. Server session records remain until expiry or invalidation. Bitspire can keep limited security logs for longer.</li>
+              <li>A token from an earlier Site sign-in can remain in browser local storage until you clear the Site's stored data. Server session records remain until expiry or invalidation. Bitspire can keep limited security logs for longer.</li>
               <li>Bitspire keeps Steam identity and playtest-access records while it needs them for the playtest, distribution, security, and support. Bitspire deletes or anonymises the records when it no longer needs them, unless the law requires a longer period.</li>
               <li>Bitspire keeps support and enforcement records while it needs them for the request, safety, the Services, legal rights, and legal duties.</li>
               <li>Provider settings and Bitspire operational needs determine the retention period for hosting, security, and backend logs.</li>
@@ -283,8 +283,8 @@
 
           <section id="security">
             <h2>11. Security</h2>
-            <p>Bitspire uses reasonable technical and organisational controls for the Services. Current controls include HTTPS, a restrictive content-security policy, limited domains for profile and avatar links, scoped session tokens, private-build access checks, input and packet limits, and local mute controls.</p>
-            <p>No system or transmission is fully secure. A peer-hosted session gives the host and players access to session data. Bitspire cannot guarantee the security of another player’s device. Secure your platform accounts. Use care when you join an unknown host. Do not share a session token, join secret, or private download link.</p>
+            <p>Bitspire uses reasonable technical and organisational controls for the Services. Current controls include HTTPS, a restrictive content-security policy, input and packet limits, and local mute controls. When the Site offered Steam sign-in and private downloads, it also restricted profile and avatar link domains, used scoped session tokens, and checked access to private builds.</p>
+            <p>No system or transmission is fully secure. A peer-hosted session gives the host and players access to session data. Bitspire cannot guarantee the security of another player's device. Secure your platform accounts. Use care when you join an unknown host. Do not share a session token, join secret, or private download link.</p>
           </section>
 
           <section id="transfers">
@@ -300,10 +300,10 @@
             <ul>
               <li>Play offline or do not join multiplayer.</li>
               <li>Deny microphone permission, select an activation mode, or mute the microphone.</li>
-              <li>Mute another player’s chat and voice on your device.</li>
+              <li>Mute another player's chat and voice on your device.</li>
               <li>Use a player, character, or lobby name and portrait that do not identify you.</li>
               <li>Disable Discord activity sharing or the Discord Integration.</li>
-              <li>Log out of the Site and clear its local storage or session storage.</li>
+              <li>Clear the Site's local storage or session storage in your browser settings.</li>
               <li>Delete local saves, character files, settings, screenshots, achievement data, and the random user identifier.</li>
               <li>Use Steam and Discord controls to manage data on those platforms.</li>
             </ul>
@@ -324,7 +324,7 @@
             </div>
             <p>You can contact Bitspire at <a href="mailto:bitspiredev@gmail.com">bitspiredev@gmail.com</a>. Bitspire can ask you to confirm your identity before it acts. It will respond within the period that the law requires. Bitspire might not have Game data that stays only on your device or with other players. Bitspire will tell you when this applies.</p>
             <p>Use the privacy tools or contact methods from Steam or Discord for data that those platforms control.</p>
-            <p>If you are in the United Kingdom, you can complain to the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner’s Office</a>. If you are in the European Economic Area, you can complain to the authority where you live, work, or think a violation occurred. In another country, contact your local privacy authority.</p>
+            <p>If you are in the United Kingdom, you can complain to the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner's Office</a>. If you are in the European Economic Area, you can complain to the authority where you live, work, or think a violation occurred. In another country, contact your local privacy authority.</p>
           </section>
 
           <section id="children">
@@ -336,8 +336,8 @@
 
           <section id="automated">
             <h2>15. Automated decisions</h2>
-            <p>The Site automatically checks if an authenticated Steam ID is on the Tithe playtest list. This check controls private-build access. It does not use behavioural profiling. A person maintains the access rules or list.</p>
-            <p>If you think the result is wrong, ask for a human review by emailing <a href="mailto:bitspiredev@gmail.com">bitspiredev@gmail.com</a>.</p>
+            <p>When private playtest access was available on the Site, it automatically checked whether an authenticated Steam ID was on the Tithe playtest list. This check controlled private-build access. It did not use behavioural profiling. A person maintained the access rules or list.</p>
+            <p>If you think an earlier result was wrong, ask for a human review by emailing <a href="mailto:bitspiredev@gmail.com">bitspiredev@gmail.com</a>.</p>
             <p>Bitspire does not otherwise use personal data for fully automated decisions that have legal or similarly important effects.</p>
           </section>
 
@@ -371,7 +371,7 @@
 
           <section id="contact">
             <h2>19. Contact</h2>
-            <p>You can send questions, requests, and complaints about this policy or Bitspire’s use of personal data to Bitspire.</p>
+            <p>You can send questions, requests, and complaints about this policy or Bitspire's use of personal data to Bitspire.</p>
             <dl class="tithe-legal__details">
               <div><dt>Controller</dt><dd>Bitspire Studio</dd></div>
               <div><dt>Privacy email</dt><dd><a href="mailto:bitspiredev@gmail.com">bitspiredev@gmail.com</a></dd></div>

@@ -1,8 +1,6 @@
-import { initializeAuthUi } from "./auth.js";
-import { showSystemEstimate } from "./os.js";
 import { initPaperStack } from "./paper-stack.js";
+import { initSteamStoreLinks } from "./steam-store.js";
 
-showSystemEstimate();
-initializeAuthUi();
 initPaperStack();
+initSteamStoreLinks();
 

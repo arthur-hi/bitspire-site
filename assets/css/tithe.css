@@ -30,13 +30,8 @@
 
 .tithe-page .studio-nav__link.is-active,
 .tithe-page .studio-nav__link:hover,
-.tithe-page .studio-nav__link:focus-visible,
-.tithe-page .studio-account__copy a {
+.tithe-page .studio-nav__link:focus-visible {
   color: var(--tithe-bone);
-}
-
-.tithe-page .account-avatar {
-  border-color: var(--tithe-bone);
 }
 
 .tithe-page .brand-switch {
@@ -63,28 +58,15 @@
   background: var(--tithe-rust);
 }
 
-.tithe-button:disabled {
-  border-color: var(--tithe-moss);
-  color: var(--tithe-dim);
-  background: var(--tithe-ash);
-  cursor: not-allowed;
-  opacity: 1;
-}
-
-.tithe-button--quiet {
-  color: var(--tithe-bone);
-  background: transparent;
-}
-
 .tithe-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   min-height: clamp(28rem, 70vh, 45rem);
   border-bottom: 1px solid var(--tithe-ash);
-  background-image: url(/assets/screenshots/outside-sunrise.jpg);
+  background-image: url(/assets/screenshots/rootmar-sunrise.png);
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
 }
 
 .tithe-dither {
@@ -102,49 +84,29 @@
   display: flex;
   min-height: inherit;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: clamp(1.5rem, 6vh, 4rem);
+  padding-bottom: 3rem;
 }
 
-.tithe-kicker {
-  margin-bottom: 0.8rem;
-  color: var(--tithe-rust);
-  font-size: 0.74rem;
-  font-weight: 900;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-}
-
-.tithe-title,
 .tithe-heading {
   font-family: "Morris Troy", Georgia, serif;
   font-weight: 400;
 }
 
 .tithe-title {
+  width: min(100%, 38rem);
   margin: 0;
-  color: var(--tithe-rust);
-  font-size: clamp(7rem, 24vw, 18rem);
-  letter-spacing: -0.04em;
-  line-height: 0.7;
-  text-shadow: 4px 4px 0 var(--tithe-black);
-}
-
-.tithe-hero__lead {
-  max-width: 34rem;
-  margin: 2rem 0 1.5rem;
-  color: var(--tithe-bone);
-  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
 }
 
 .tithe-status-line {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.65rem;
+  margin-top: 1rem;
 }
 
-.tithe-status-line span {
+.tithe-status {
   padding: 0.45rem 0.65rem;
   border: 1px solid var(--tithe-moss);
   color: var(--tithe-bone);
@@ -167,10 +129,6 @@
   align-items: end;
   gap: 2rem;
   margin-bottom: 2rem;
-}
-
-.tithe-gallery__heading .tithe-kicker {
-  margin: 0;
 }
 
 .tithe-gallery__heading .tithe-heading {
@@ -322,6 +280,54 @@
   object-fit: contain;
 }
 
+.tithe-gallery-stage.is-video {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  grid-template-rows: minmax(200px, 1fr) auto;
+  aspect-ratio: auto;
+}
+
+.tithe-gallery-stage.is-video .tithe-gallery-main {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.tithe-gallery-stage.is-video:not(:fullscreen) .tithe-gallery-main {
+  height: auto;
+  min-height: 200px;
+  max-height: 100svh;
+  aspect-ratio: 16 / 9;
+}
+
+.tithe-gallery-main__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.tithe-gallery-main__img[hidden],
+.tithe-gallery-stage.is-video .tithe-gallery-vignette {
+  display: none;
+}
+
+.tithe-gallery-stage.is-video .tithe-gallery-arrow,
+.tithe-gallery-stage.is-video .tithe-gallery-stage__footer {
+  position: static;
+  grid-row: 2;
+}
+
+.tithe-gallery-stage.is-video .tithe-gallery-arrow {
+  height: auto;
+  transform: none;
+}
+
+.tithe-gallery-stage.is-video .tithe-gallery-stage__footer {
+  justify-content: flex-end;
+  padding: 0.35rem;
+}
+
 .tithe-gallery-thumbs-wrapper {
   display: flex;
   flex-direction: column;
@@ -363,6 +369,30 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.tithe-thumb-item.is-video {
+  position: relative;
+  flex-basis: 128px;
+  min-height: 74px;
+}
+
+.tithe-thumb-item__play {
+  display: none;
+}
+
+.tithe-thumb-item.is-video .tithe-thumb-item__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--tithe-moss);
+  color: var(--tithe-bone);
+  background: var(--tithe-black);
 }
 
 .tithe-thumb-item:hover,
@@ -441,193 +471,6 @@ body.is-gallery-dragging {
   user-select: none;
 }
 
-.tithe-access {
-  padding: clamp(4.5rem, 9vw, 8rem) 0;
-}
-
-.tithe-access__heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.tithe-access__heading h2 {
-  margin: 0;
-  color: var(--tithe-bone);
-  font-size: clamp(3.2rem, 8vw, 6.5rem);
-  line-height: 0.9;
-}
-
-.tithe-system {
-  max-width: 28rem;
-  margin: 0;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid var(--tithe-moss);
-  color: var(--tithe-dim);
-  background: var(--tithe-soot);
-}
-
-.tithe-alert {
-  border-radius: 0;
-}
-
-.tithe-panel {
-  display: grid;
-  grid-template-columns: minmax(4rem, 0.1fr) minmax(0, 1fr);
-  gap: clamp(1.25rem, 4vw, 3rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid var(--tithe-moss);
-  background: var(--tithe-soot);
-  box-shadow: 8px 8px 0 var(--tithe-ash);
-}
-
-.tithe-panel__index {
-  margin: 0;
-  color: var(--tithe-rust);
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-}
-
-.tithe-panel .tithe-heading {
-  margin-bottom: 0.75rem;
-  color: var(--tithe-bone);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 0.95;
-}
-
-.tithe-panel__content {
-  min-width: 0;
-}
-
-.tithe-panel__heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--tithe-ash);
-}
-
-.tithe-panel__heading .tithe-heading {
-  margin: 0;
-}
-
-.tithe-panel--error {
-  border-color: var(--tithe-rust);
-}
-
-.tithe-request {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 2rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--tithe-ash);
-}
-
-.tithe-request .tithe-kicker {
-  margin-bottom: 0.5rem;
-}
-
-.tithe-request .tithe-heading {
-  margin-bottom: 0.75rem;
-  font-size: clamp(2rem, 4vw, 3.25rem);
-}
-
-.tithe-request__action {
-  display: grid;
-  justify-items: start;
-  gap: 0.6rem;
-}
-
-.tithe-request__action small {
-  max-width: 18rem;
-  color: var(--tithe-dim);
-}
-
-.tithe-page .download-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.tithe-page .download-item {
-  position: relative;
-  min-height: 15rem;
-  padding: 1.5rem;
-  border: 1px solid var(--tithe-moss);
-  background-color: var(--tithe-black);
-  background-image: url("/assets/textures/tithe-bayer.png");
-  background-size: 16px 16px;
-  background-blend-mode: soft-light;
-}
-
-.tithe-page .download-item h3 {
-  margin-bottom: 1.25rem;
-  color: var(--tithe-bone);
-  font-family: "Morris Troy", Georgia, serif;
-  font-size: clamp(2.1rem, 4vw, 3.25rem);
-  font-weight: 400;
-  line-height: 0.95;
-}
-
-.tithe-page .download-item--suggested {
-  z-index: 1;
-  border-color: var(--tithe-rust);
-  box-shadow: inset 0 0 0 2px var(--tithe-rust);
-}
-
-.tithe-page .download-note {
-  color: var(--tithe-rust);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.tithe-page .download-link {
-  margin-top: 1rem;
-  border: 1px solid var(--tithe-bone);
-  border-radius: 0;
-  color: var(--tithe-black);
-  background: var(--tithe-bone);
-  font-weight: 900;
-}
-
-.tithe-page .download-link:hover,
-.tithe-page .download-link:focus-visible {
-  border-color: var(--tithe-rust);
-  color: var(--tithe-bone);
-  background: var(--tithe-rust);
-}
-
-.tithe-note {
-  display: grid;
-  grid-template-columns: minmax(8rem, 0.25fr) minmax(0, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--tithe-ash);
-  color: var(--tithe-dim);
-}
-
-.tithe-note span {
-  color: var(--tithe-rust);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.tithe-note p {
-  max-width: 50rem;
-  margin: 0;
-}
-
 .tithe-footer {
   border-top: 1px solid var(--tithe-ash);
   color: var(--tithe-dim);
@@ -668,7 +511,8 @@ body.is-gallery-dragging {
   background: var(--tithe-soot);
 }
 
-.tithe-legal__header .tithe-kicker {
+.tithe-legal__logo {
+  width: min(100%, 10rem);
   margin-bottom: 1rem;
 }
 
@@ -844,33 +688,7 @@ body.is-gallery-dragging {
   margin: 0;
 }
 
-@media (max-width: 991.98px) {
-  .tithe-page .download-list {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 767.98px) {
-  .tithe-access__heading,
-  .tithe-panel__heading,
-  .tithe-request {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .tithe-request {
-    grid-template-columns: 1fr;
-  }
-
-  .tithe-system {
-    max-width: none;
-  }
-
-  .tithe-panel,
-  .tithe-note {
-    grid-template-columns: 1fr;
-  }
-
   .tithe-gallery__heading {
     grid-template-columns: 1fr;
   }
@@ -891,10 +709,6 @@ body.is-gallery-dragging {
 }
 
 @media (max-width: 575.98px) {
-  .tithe-title {
-    font-size: clamp(6rem, 35vw, 9rem);
-  }
-
   .tithe-footer__inner {
     flex-direction: column;
   }

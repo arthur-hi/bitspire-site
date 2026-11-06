@@ -7,6 +7,7 @@ import {
   requireAllowedOrigin,
 } from "../_shared/http.ts";
 import { getGameAccess, getSessionUser } from "../_shared/session.ts";
+import { steamPortalUnavailableResponse } from "../_shared/steam-portal.ts";
 
 interface BuildRow {
   platform: "windows" | "linux" | "macos";
@@ -19,6 +20,9 @@ interface BuildRow {
 Deno.serve(async (request) => {
   const preflight = optionsResponse(request);
   if (preflight) return preflight;
+
+  const unavailable = steamPortalUnavailableResponse(request);
+  if (unavailable) return unavailable;
 
   try {
     requireAllowedOrigin(request);

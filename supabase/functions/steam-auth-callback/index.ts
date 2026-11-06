@@ -2,9 +2,13 @@ import { getSiteUrl } from "../_shared/config.ts";
 import { makeRandomToken, sha256Hex } from "../_shared/crypto.ts";
 import { getAdminClient } from "../_shared/database.ts";
 import { HttpError, redirectResponse } from "../_shared/http.ts";
+import { steamPortalUnavailableResponse } from "../_shared/steam-portal.ts";
 import { getSteamProfile, verifySteamLogin } from "../_shared/steam.ts";
 
 Deno.serve(async (request) => {
+  const unavailable = steamPortalUnavailableResponse(request);
+  if (unavailable) return unavailable;
+
   const siteCallbackUrl = new URL("/auth/callback/", getSiteUrl());
 
   try {

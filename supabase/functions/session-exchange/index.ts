@@ -9,10 +9,14 @@ import {
   requireAllowedOrigin,
 } from "../_shared/http.ts";
 import { createSession } from "../_shared/session.ts";
+import { steamPortalUnavailableResponse } from "../_shared/steam-portal.ts";
 
 Deno.serve(async (request) => {
   const preflight = optionsResponse(request);
   if (preflight) return preflight;
+
+  const unavailable = steamPortalUnavailableResponse(request);
+  if (unavailable) return unavailable;
 
   try {
     requireAllowedOrigin(request);
